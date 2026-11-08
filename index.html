@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050507">
+  <meta name="description" content="TENSILE Strength Club — interactive training studio concept with classes, coaches, virtual tour and weekly workout planner.">
+  <title>TENSILE — Strength Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}
+  </script>
+</head>
+<body>
+  <nav aria-label="Main navigation">
+    <a class="lg" href="#home" aria-label="TENSILE home"><i></i><span>TENSILE</span></a>
+    <div class="nl">
+      <a href="#classes">Classes</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#planner">My Week</a>
+      <a href="#tour">Virtual Tour</a>
+      <a href="#coaches">Coaches</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#plans">Plans</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="pill" href="#plans">Join now</a>
+  </nav>
+
+  <main>
+    <section class="v on" id="home">
+      <div class="hero" id="hero">
+        <canvas id="cv" aria-label="Interactive geometric strength club home screen"></canvas>
+        <div class="fb">
+          <h1 class="hh">Lift heavy.<br>Stay sharp.</h1>
+          <p>Strength floor, coached classes and recovery. Open every day. First week free.</p>
+          <div>
+            <a class="pill" href="#plans">Join now</a>
+            <a class="pill gh" href="#classes">See classes</a>
+            <a class="pill gh" href="#tour">Explore the club</a>
+          </div>
+        </div>
+      </div>
+      <div class="tick"><div>SQUAT<b>✦</b>PRESS<b>✦</b>PULL<b>✦</b>HINGE<b>✦</b>CARRY<b>✦</b>SPRINT<b>✦</b>RECOVER<b>✦</b>SQUAT<b>✦</b>PRESS<b>✦</b>PULL<b>✦</b>HINGE<b>✦</b>CARRY<b>✦</b>SPRINT<b>✦</b>RECOVER<b>✦</b></div></div>
+      <div class="pg">
+        <div class="gd st">
+          <div class="cd tl fi"><div class="num" data-n="2400">0</div><small>example members</small></div>
+          <div class="cd tl fi" style="--d:.1s"><div class="num" data-n="18">0</div><small>example certified coaches</small></div>
+          <div class="cd tl fi" style="--d:.2s"><div class="num" data-n="64">0</div><small>example classes a week</small></div>
+          <div class="cd tl fi" style="--d:.3s"><div class="num" data-n="22">0</div><small>example squat racks</small></div>
+        </div>
+        <div class="quick-links fi">
+          <a href="#tour">Explore our spaces <span>↗</span></a>
+          <a href="#schedule">Find your next class <span>↗</span></a>
+          <a href="#planner">Build your week <span>↗</span></a>
+        </div>
+        <div class="cta fi"><h2 class="hh">Your first week is on us.</h2><a class="pill" href="#plans">Pick a plan</a></div>
+      </div>
+    </section>
+
+    <section class="v" id="classes"><div class="pg">
+      <h1 class="hh sp">Classes</h1>
+      <p class="lead fi">Small groups, real coaching. Find the workout that fits your goal.</p>
+      <div class="fl fi" id="fl" role="group" aria-label="Class category">
+        <button class="on" data-f="" aria-pressed="true">All</button>
+        <button data-f="Strength" aria-pressed="false">Strength</button>
+        <button data-f="Conditioning" aria-pressed="false">Conditioning</button>
+        <button data-f="Recovery" aria-pressed="false">Recovery</button>
+      </div>
+      <div class="gd" id="cl"></div>
+    </div></section>
+
+    <section class="v" id="schedule"><div class="pg">
+      <h1 class="hh sp">Schedule</h1>
+      <p class="lead fi">Browse the next seven days, filter by class type, inspect the details and plan your week.</p>
+      <div class="demo-note fi">Demo schedule: reservations and available spots are examples stored only in this browser. No real gym booking is created.</div>
+      <div class="schedule-tools fi">
+        <div class="dy" id="dy" role="group" aria-label="Choose training date"></div>
+        <div class="fl" id="sf" role="group" aria-label="Schedule category">
+          <button data-kind="All" class="on" aria-pressed="true">All</button>
+          <button data-kind="Strength" aria-pressed="false">Strength</button>
+          <button data-kind="Conditioning" aria-pressed="false">Conditioning</button>
+          <button data-kind="Recovery" aria-pressed="false">Recovery</button>
+        </div>
+      </div>
+      <p class="schedule-caption" id="scheduleCaption" aria-live="polite"></p>
+      <div class="ss" id="ss"></div>
+      <div class="action-row"><a class="pill gh" href="#planner">Open my weekly planner ↗</a></div>
+    </div></section>
+
+    <section class="v" id="planner"><div class="pg">
+      <h1 class="hh sp">My week</h1>
+      <p class="lead fi">Build a personal workout week. Add sessions from the schedule or choose your own, then export a calendar file.</p>
+      <div class="demo-note fi">Personal demo planner: your choices are saved locally on this device, not sent to the gym.</div>
+      <form class="planner-form cd fi" id="plannerForm">
+        <div class="field"><label for="plannerDay">Day</label><select id="plannerDay" required></select></div>
+        <div class="field"><label for="plannerClass">Class</label><select id="plannerClass" required></select></div>
+        <div class="field"><label for="plannerTime">Time</label><select id="plannerTime" required></select></div>
+        <button class="pill" type="submit">+ Add to my week</button>
+      </form>
+      <div class="planner-summary" id="plannerSummary" aria-live="polite"></div>
+      <div class="week-grid" id="weekGrid"></div>
+      <div class="action-row">
+        <button class="pill" id="exportWeek" type="button">Export .ics calendar ↗</button>
+        <button class="pill gh" id="clearWeek" type="button">Clear my week</button>
+      </div>
+    </div></section>
+
+    <section class="v" id="tour"><div class="pg">
+      <h1 class="hh sp">Virtual tour</h1>
+      <p class="lead fi">Explore our concept spaces. Switch between rooms or tap a glowing hotspot to learn more.</p>
+      <div class="demo-note fi">Illustrative tour with stock photography, not actual photos or a real 360° gym location.</div>
+      <div class="tour-wrap fi">
+        <div class="tour-visual" id="tourVisual">
+          <img id="tourImage" alt="Fitness club training area" loading="lazy">
+          <div id="tourHotspots"></div>
+          <div class="tour-image-caption"><span>INTERACTIVE CLUB TOUR</span><strong id="tourImageTitle">Strength floor</strong></div>
+        </div>
+        <aside class="tour-side cd">
+          <div class="tour-kicker">EXPLORE THE SPACE <span id="tourNumber">01 / 04</span></div>
+          <div id="tourTabs" class="tour-tabs" role="group" aria-label="Choose room"></div>
+          <h2 id="tourTitle">Strength floor</h2>
+          <p id="tourText"></p>
+          <div class="tour-points" id="tourPoints"></div>
+          <a class="pill" href="#contact">Book a free tour ↗</a>
+        </aside>
+      </div>
+    </div></section>
+
+    <section class="v" id="coaches"><div class="pg">
+      <h1 class="hh sp">Coaches</h1>
+      <p class="lead fi">The people behind the sessions. Example profiles for this gym concept.</p>
+      <div class="gd" id="co"></div>
+    </div></section>
+
+    <section class="v" id="gallery"><div class="pg">
+      <h1 class="hh sp">Gallery</h1>
+      <p class="lead fi">A look around the floor. Tap any animated tile to open it.</p>
+      <div class="gl2" id="gl2"></div>
+    </div></section>
+
+    <section class="v" id="plans"><div class="pg">
+      <h1 class="hh sp">Plans</h1>
+      <p class="lead fi">Pick what suits you. Switch billing and compare every feature before sending a membership enquiry.</p>
+      <div class="demo-note fi">Illustrative pricing only. No payments or subscriptions are processed on this website.</div>
+      <div class="tg fi" id="tg" role="group" aria-label="Billing period">
+        <button class="on" data-y="0" aria-pressed="true">Monthly</button>
+        <button data-y="1" aria-pressed="false">Yearly · save 20%</button>
+      </div>
+      <div class="gd plan-cards" id="pn"></div>
+      <h2 class="section-subheading fi">Compare memberships</h2>
+      <div class="comparison-scroll fi">
+        <table class="compare-table" id="comparisonTable">
+          <caption class="sr-only">Membership plan feature comparison</caption>
+          <thead><tr><th scope="col">Feature</th><th scope="col">Floor</th><th scope="col">Club</th><th scope="col">Lab</th></tr></thead>
+          <tbody id="comparisonBody"></tbody>
+        </table>
+      </div>
+    </div></section>
+
+    <section class="v" id="contact"><div class="pg">
+      <h1 class="hh sp">Contact</h1>
+      <p class="lead fi">Book a free club tour or ask a question. Submit a real enquiry after the website is deployed with Netlify Forms.</p>
+      <div class="ct">
+        <div class="cd tl fi">
+          <div class="op" id="op">Checking hours…</div>
+          <h3 id="ad"></h3>
+          <p>Free bike parking, showers and lockers (concept details).</p>
+          <div class="hr"><span>Mon – Fri</span><b>05:00 – 23:00</b><span>Sat – Sun</span><b>07:00 – 21:00</b></div>
+        </div>
+        <div class="cd fi" style="--d:.1s" id="fw">
+          <form id="f" name="tour-request" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="tour-request">
+            <p class="sr-only"><label>Do not fill this field <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <h3>Book a free tour</h3>
+            <label class="sr-only" for="requestName">Your name</label>
+            <input id="requestName" name="name" placeholder="Your name" autocomplete="name" maxlength="90" required>
+            <label class="sr-only" for="requestEmail">Your email</label>
+            <input id="requestEmail" name="email" type="email" placeholder="Email" autocomplete="email" maxlength="160" required>
+            <label class="sr-only" for="requestGoal">Your goal</label>
+            <select id="requestGoal" name="goal" required>
+              <option value="Build strength">Build strength</option>
+              <option value="Learn the lifts">Learn the lifts</option>
+              <option value="Improve conditioning">Improve conditioning</option>
+              <option value="General enquiry">General enquiry</option>
+            </select>
+            <label class="sr-only" for="requestPlan">Membership of interest</label>
+            <select id="requestPlan" name="plan">
+              <option value="Not sure yet">Membership: not sure yet</option>
+              <option value="Floor">Floor</option><option value="Club">Club</option><option value="Lab">Lab</option>
+            </select>
+            <label class="sr-only" for="requestMessage">Your message</label>
+            <textarea id="requestMessage" name="message" maxlength="1500" placeholder="Anything we should know?"></textarea>
+            <button class="pill" type="submit" id="submitRequest">Request a tour</button>
+            <p id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="cd mp fi" style="grid-column:1/-1;--d:.15s">
+          <svg viewBox="0 0 800 340" role="img" aria-label="Illustrative location map, not a real gym address">
+            <rect width="800" height="340" fill="#0c0c10"/>
+            <path d="M-20 260C150 230 260 300 420 250S700 170 820 200" stroke="#b9abff" stroke-opacity=".16" stroke-width="46" fill="none"/>
+            <path d="M0 90H800M0 190H800M130 0V340M330 0V340M560 0V340M720 0V340" stroke="#1b1b22" stroke-width="16" fill="none"/>
+            <path d="M0 90H800M0 190H800M130 0V340M330 0V340M560 0V340M720 0V340" stroke="#2c2c36" stroke-width="2" fill="none"/>
+            <path class="rt" d="M130 340V190H560V90" stroke="#36d67e" stroke-width="4" fill="none"/>
+            <circle cx="130" cy="330" r="6" fill="#36d67e"/>
+            <circle class="rp" cx="560" cy="90" r="14" fill="#b9abff"/>
+            <circle class="rp" style="animation-delay:1.2s" cx="560" cy="90" r="14" fill="#b9abff"/>
+            <circle cx="560" cy="90" r="9" fill="#b9abff" stroke="#fff" stroke-width="3"/>
+            <text id="mt" x="582" y="96" fill="#e6e6ea" font-size="20" font-weight="500" font-family="Inter,sans-serif"></text>
+          </svg>
+          <p class="map-note">Illustrative map. Replace the placeholder location before delivering this site to a client.</p>
+          <div class="action-row"><a class="pill" data-m="s" target="_blank" rel="noopener">Open Google Maps</a><a class="pill gh" data-m="d" target="_blank" rel="noopener">Get directions</a></div>
+        </div>
+      </div>
+    </div></section>
+  </main>
+
+  <dialog id="sessionDialog" aria-label="Class details">
+    <div class="session-dialog-content" id="sessionDialogContent"></div>
+    <button class="dialog-close" id="closeSessionDialog" type="button" aria-label="Close class details">✕</button>
+  </dialog>
+  <div id="lb" role="dialog" aria-label="Gallery viewer"></div>
+  <div id="pb"></div>
+  <footer>© 2026 TENSILE Strength Club · Fictional gym portfolio project</footer>
+  <script src="script.js"></script>
+  <script type="module" src="scene.js"></script>
+</body>
+</html>
